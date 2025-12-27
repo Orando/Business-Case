@@ -55,7 +55,6 @@ codeunit 50804 "Dimension Correction Mgt."
         if BusinessCaseSetup."Enable Email Notification" then
             SendNotificationEmail(ManualExecution);
 
-        // Show summary message
         ShowSummaryMessage(ManualExecution);
     end;
 
@@ -70,14 +69,8 @@ codeunit 50804 "Dimension Correction Mgt."
     local procedure ProcessGLEntriesForCorrection(FromDate: Date; ToDate: Date; ManualExecution: Boolean)
     var
         GLEntry: Record "G/L Entry";
-        GLAccountRule: Record "G/L Account";
-        DimensionCorrection: Record "Dimension Correction";
-        DimCorrectionEntryLog: Record "Dim Correction Entry Log";
-        DimensionSetEntry: Record "Dimension Set Entry";
-        TempDimCorrectionSetBuffer: Record "Dim Correction Set Buffer" temporary;
         ExecutionType: Option Manual,Automatic;
     begin
-        // Set execution type for logging
         if ManualExecution then
             ExecutionType := ExecutionType::Manual
         else
@@ -150,7 +143,6 @@ codeunit 50804 "Dimension Correction Mgt."
     local procedure ProcessEntryCorrection(GLEntry: Record "G/L Entry"; ExecutionType: Option): Boolean
     var
         DimensionCorrection: Record "Dimension Correction";
-        //DimCorrectionMgt: Codeunit "Dim Correction Mgt";
         TempSelectedDimCorrection: Record "Dimension Correction" temporary;
     begin
         // Get applicable dimension corrections
@@ -229,14 +221,11 @@ codeunit 50804 "Dimension Correction Mgt."
 
     local procedure ApplySingleCorrection(DimensionCorrection: Record "Dimension Correction"; GLEntry: Record "G/L Entry"; ExecutionType: Option): Boolean
     var
-        //DimCorrectionMgt: Codeunit "Dim Correction Mgt";
         DimCorrectionChange: Record "Dim Correction Change";
         OldDimensionValue: Code[20];
         NewDimensionValue: Code[20];
     begin
-        // Use standard BC Dimension Correction Management
-        // This is a simplified approach - actual implementation would use the full API
-
+        //standard BC Dimension Correction Management
         DimCorrectionChange.SetRange("Dimension Correction Entry No.", DimensionCorrection."Entry No.");
         if DimCorrectionChange.FindSet() then
             repeat
@@ -362,9 +351,6 @@ codeunit 50804 "Dimension Correction Mgt."
 
         // Create and send email
         EmailMessage.Create(BusinessCaseSetup."Notification Email", Subject, HtmlBody, true);
-
-        // Add additional recipients if needed (can be extended)
-        // EmailMessage.AddCC('additional@email.com');
 
         if Email.Send(EmailMessage) then
             // Log successful email send
