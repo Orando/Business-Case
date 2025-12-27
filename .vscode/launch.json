@@ -1,0 +1,25 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "BC260",
+            "request": "launch",
+            "type": "al",
+            "environmentType": "OnPrem",
+            "server": "http://102.215.123.210:8080/BC260",
+            "port": 4049,
+            "serverInstance": "BC260",
+            "authentication": "UserPassword",
+            "startupObjectId": 22,
+            "startupObjectType": "Page",
+            "breakOnError": "All",
+            "launchBrowser": false,
+            "enableLongRunningSqlStatements": true,
+            "enableSqlInformationDebugger": true,
+            "dependencyPublishingOption": "Ignore",
+            "schemaUpdateMode": "ForceSync",
+            "tenant": "default",
+            "usePublicURLFromServer": true
+        }
+    ]
+}

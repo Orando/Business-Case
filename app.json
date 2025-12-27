@@ -1,0 +1,32 @@
+{
+  "id": "8bfc3910-5d51-47f6-8cbe-0c590709ee7f",
+  "name": "BUSINESS CASE",
+  "publisher": "Walter Orando",
+  "version": "1.0.0.0",
+  "brief": "",
+  "description": "",
+  "privacyStatement": "",
+  "EULA": "",
+  "help": "",
+  "url": "",
+  "logo": "",
+  "dependencies": [],
+  "screenshots": [],
+  "platform": "26.0.32469.0",
+  "application": "26.0.30643.32481",
+  "idRanges": [
+    {
+      "from": 50800,
+      "to": 50848
+    }
+  ],
+  "resourceExposurePolicy": {
+    "allowDebugging": true,
+    "allowDownloadingSource": true,
+    "includeSourceInSymbolFile": true
+  },
+  "runtime": "15.0",
+  "features": [
+    "NoImplicitWith"
+  ]
+}
